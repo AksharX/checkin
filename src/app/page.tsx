@@ -1,14 +1,3 @@
-"use client";
-import { useAuth } from "@/components/hooks/useAuth";
-import {
-  Course,
-  useCourses,
-  useStudents,
-} from "@/components/hooks/useClassroom";
-import { PageLayout } from "@/components/shared/pageLayout";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useState } from "react";
-
 export default function Home() {
   return <Layout></Layout>;
 }

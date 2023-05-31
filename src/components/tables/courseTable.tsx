@@ -1,6 +1,11 @@
-import { Course } from "@/components/hooks/useClassroom";
+"use client";
 
-export function CourseTable({ courses }: { courses: Course[] }) {
+import { Course, useCourses } from "@/components/hooks/useClassroom";
+import ModalComponent from "@/components/modals/modalComponent";
+
+export default function CourseTable() {
+  const { data: courses = [] } = useCourses();
+
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -43,9 +48,7 @@ export function CourseTable({ courses }: { courses: Course[] }) {
                 <td className="px-6 py-4">{room}</td>
                 <td className="px-6 py-4">{section}</td>
                 <td className="px-6 py-4 text-right">
-                  <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                    Import Students
-                  </button>
+                  <ModalComponent></ModalComponent>
                 </td>
               </tr>
             );
