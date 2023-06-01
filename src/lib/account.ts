@@ -19,9 +19,29 @@ export async function getAccount(userId: ObjectId, provider: "google") {
     .db(MONGO.DATABASE_NAME)
     .collection<Account>("accounts")
     .findOne({
-      userId,
+      userId: new ObjectId(userId),
       provider,
     });
+
+  return response;
+}
+
+export async function updateAccount(
+  userId: string,
+  provider: "google",
+  account: Partial<Account>
+) {
+  const client = await clientPromise;
+
+  const response = await client
+    .db(MONGO.DATABASE_NAME)
+    .collection<Account>("accounts")
+    .findOneAndUpdate(
+      { userId: new ObjectId(userId), provider },
+      {
+        ...account,
+      }
+    );
 
   return response;
 }

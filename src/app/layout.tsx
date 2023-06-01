@@ -1,9 +1,8 @@
-import { getSession } from "next-auth/react";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import React from "react";
 import AuthContext from "@/components/contexts/authContexts";
-import Script from "next/script";
+import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +16,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactElement;
 }) {
-  const session = await getSession();
+  const session = await getServerSession();
   return (
     <html lang="en" className="dark">
       <head>

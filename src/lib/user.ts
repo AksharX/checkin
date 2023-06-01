@@ -12,14 +12,14 @@ interface User {
   createdAt: Date;
 }
 
-export async function getUser(id: ObjectId) {
+export async function getUser(id: string) {
   const client = await clientPromise;
 
   const response = await client
     .db(MONGO.DATABASE_NAME)
     .collection<{}>("users")
     .findOne({
-      _id: id,
+      _id: new ObjectId(id),
     });
 
   return response;

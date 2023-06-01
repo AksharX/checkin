@@ -690,7 +690,7 @@ export function Navbar() {
             >
               <li>
                 <button
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: "/login" })}
                   className="block py-2 w-full px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Sign out
